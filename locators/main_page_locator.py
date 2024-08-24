@@ -15,16 +15,8 @@ class MainPageLocators:
     BUTTON_Is_it_possible_to_cancel_an_order = (By.XPATH, '//*[@id="accordion__heading-6"]')
     BUTTON_I_live_outside_the_MKAD = (By.XPATH, '//*[@id="accordion__heading-7"]')
 
-    ORDER_BUTTON_TOP = (By.XPATH, '//*[@class="Button_Button__ra12g Button_Middle__1CSJM"]')  # исправить
-    ORDER_BUTTON_BOTTOM = (By.XPATH, '//*[@class="Button_Button__ra12g Button_Middle__1CSJM"]')
     LOGO_SCOOTER = (By.XPATH, '//*[@alt="Scooter"]')
-    LOGO_YANDEX = (By.XPATH, '//*[@alt="Яндекс"]')
+    LOGO_YANDEX = (By.CLASS_NAME, "Header_LogoYandex__3TSOI")
 
-
-    @staticmethod
-    def button_by_text(var):
-        return By.XPATH, f'//button[text() = "{var}"]'
-
-    @staticmethod
-    def get_question_answer(question_number):
-        return By.XPATH, f'//button[text() = "{question_number}"]'
+    FAQ_BUTTONS = (By.CSS_SELECTOR, '.accordion__control')
+    FAQ_ANSWERS = (By.CSS_SELECTOR, '.accordion__panel')
