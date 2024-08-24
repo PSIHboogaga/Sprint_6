@@ -1,19 +1,27 @@
 import pytest
+import allure
 
-from data import Questions_About_Important_Things_Data
-from locators.main_page_locator import MainPageLocators
+from data import QuestionsAboutImportantThingsData
 from pages.main_page import MainPage
 
 
 class TestQuestion:
-
-    @pytest.mark.parametrize(Questions_About_Important_Things_Data.param, Questions_About_Important_Things_Data.value)
-    def test_question(self, driver, number, expected_answer):
-
-        print(MainPageLocators.get_question_answer(number))
-
+    @allure.title('Проверка ответов на вопросы')
+    @pytest.mark.parametrize(QuestionsAboutImportantThingsData.param, QuestionsAboutImportantThingsData.value)
+    def test_question(self, driver, question, expected_answer):
         main_page = MainPage(driver)
 
-        element = main_page.wait_and_find_element()
+        questions = main_page.driver.find_elements(*MainPage.open_faq) # Найти и открыть вопрос
 
-        assert element.text == expected_answer
+        for index, element in enumerate(questions):    # Ищем вопрос по тексту
+            if element.text == question:
+                element.click()  # Кликаем по вопросу
+                break
+
+        actual_answer = main_page.get_faq_answer(index)  # Получаем ответ на вопрос
+
+        assert actual_answer == expected_answer   # Проверяем, что полученный ответ совпадает с ожидаемым
+
+
+
+

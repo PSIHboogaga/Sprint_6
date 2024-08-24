@@ -33,3 +33,6 @@ class TestOrderSamokat:
         order_page = OrderPage(driver)
 
         assert order_page.get_current_banner(TheOrderHasBeenPlaced.ORDEROK) == TheOrderHasBeenPlaced.ORDEROK, ('Заказ не оформлен')
+
+        # def get_success_message(self):
+        # return self.wait_and_find_element(OrderPageLocators.SUCCESS_MESSAGE).text
