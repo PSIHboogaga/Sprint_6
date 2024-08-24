@@ -17,7 +17,7 @@ class OrderPage(BasePage):
     def set_surname_field(self, surname):
         self.wait_and_find_element(*OrderPageLocators.SURNAME_INPUT).send_keys(surname)
 
-    @allure.step('Заполняем поле фамилия')
+    @allure.step('Заполняем поле адрес')
     def set_adress_field(self, adress):
         self.wait_and_find_element(*OrderPageLocators.ADRESS_INPUT).send_keys(adress)
 
@@ -71,6 +71,5 @@ class OrderPage(BasePage):
         self.click_rental_period()
         self.click_submit_button()
         self.click_yes_button()
-
 
 
