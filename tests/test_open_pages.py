@@ -3,9 +3,7 @@ from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 
 from data import Urls
-from locators.main_page_locator import MainPageLocators
 from pages.main_page import MainPage
-
 
 class TestOpenPageScooter:
     @allure.title('Проверка открытия страниц по клику')
@@ -13,7 +11,6 @@ class TestOpenPageScooter:
     def test_open_page_scooter(self, driver):
         main_page = MainPage(driver)
         main_page.open_page(Urls.MAIN_PAGE)
-        WebDriverWait(self.driver, 10).until(expected_conditions.element_to_be_clickable(*MainPageLocators.LOGO_SCOOTER))
         main_page.click_logo_scooter()
 
         assert driver.current_url == 'https://qa-scooter.praktikum-services.ru/', (
@@ -26,9 +23,10 @@ class TestOpenPageDzen:
     def test_open_page_dzen(self, driver):
         main_page = MainPage(driver)
         main_page.open_page(Urls.MAIN_PAGE)
-        WebDriverWait(self.driver, 10).until(
-            expected_conditions.element_to_be_clickable(*MainPageLocators.LOGO_YANDEX))
         main_page.click_logo_yandex()
+        WebDriverWait(driver, 10).until(expected_conditions.number_of_windows_to_be(2))
+        driver.switch_to.window(driver.window_handles[1])
+        WebDriverWait(driver, 10).until(expected_conditions.url_contains('https://dzen.ru/'))
 
         assert driver.current_url == 'https://dzen.ru/?yredirect=true', (
             'Страница ДЗЕН не открыта')  # Проверяем, что перешли на Dzen
