@@ -9,40 +9,50 @@ from pages.base_page import BasePage
 class OrderPage(BasePage):
     @allure.step("Клик кнопки заказать(вверху)")
     def click_order_button_up(self):
-        self.wait_and_find_element(*MainPageLocators.BUTTON_ORDER_UP).click()
+        order_button_up = self.wait_and_find_element(*MainPageLocators.BUTTON_ORDER_UP)
+        order_button_up.click()
     @allure.step('Заполняем поле имя')
     def set_name_field(self, name):
-        self.wait_and_find_element(*OrderPageLocators.NAME_INPUT).send_keys(name)
+        name_field = self.wait_and_find_element(*OrderPageLocators.NAME_INPUT)
+        name_field.send_keys(name)
     @allure.step('Заполняем поле фамилия')
     def set_surname_field(self, surname):
-        self.wait_and_find_element(*OrderPageLocators.SURNAME_INPUT).send_keys(surname)
+        surname_field = self.wait_and_find_element(*OrderPageLocators.SURNAME_INPUT)
+        surname_field.send_keys(surname)
 
     @allure.step('Заполняем поле адрес')
     def set_adress_field(self, adress):
-        self.wait_and_find_element(*OrderPageLocators.ADRESS_INPUT).send_keys(adress)
+        adress_field = self.wait_and_find_element(*OrderPageLocators.ADRESS_INPUT)
+        adress_field.send_keys(adress)
 
     @allure.step('Заполняем поле телефон')
     def set_phone_field(self, phone):
-        self.driver.find_element(*OrderPageLocators.PHONE_INPUT).send_keys(phone)
+        phone_field = self.driver.find_element(*OrderPageLocators.PHONE_INPUT)
+        phone_field.send_keys(phone)
     @allure.step('Нажимаем на поле метро')
     def click_metro_button(self):
-        self.wait_and_find_element(*OrderPageLocators.METRO_INPUT).click()
+        metro_button = self.wait_and_find_element(*OrderPageLocators.METRO_INPUT)
+        metro_button.click()
 
     @allure.step('Вводим Черкизовская')
     def select_metro(self, metro):
-        self.wait_and_find_element(*OrderPageLocators.METRO_INPUT).send_keys(metro)
+        metro = self.wait_and_find_element(*OrderPageLocators.METRO_INPUT)
+        metro.send_keys(metro)
 
     @allure.step('Нажимаем кнопку далее')
     def click_next_button(self):
-        self.wait_and_find_element(*OrderPageLocators.BUTTON_NEXT).click()
+        next_button = self.wait_and_find_element(*OrderPageLocators.BUTTON_NEXT)
+        next_button.click()
 
     @allure.step('Нажимаем на поле когда привезти самокат')
     def click_time_field(self):
-        self.wait_and_find_element(*OrderPageLocators.TIME_FIELD).click()
+        time_field = self.wait_and_find_element(*OrderPageLocators.TIME_FIELD)
+        time_field.click()
 
     @allure.step('Выбираем дату')
     def click_time_field_select(self):
-        self.wait_and_find_element(*OrderPageLocators.TIME_FIELD_SELECT).click()
+        time_field_select = self.wait_and_find_element(*OrderPageLocators.TIME_FIELD_SELECT)
+        time_field_select.click()
 
     @allure.step('Выбираем период')
     def click_rental_period(self):

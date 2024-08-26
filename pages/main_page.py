@@ -11,17 +11,20 @@ class MainPage(BasePage):
 
     @allure.description('Клик на логотип «Самоката»')
     def click_logo_scooter(self):
-        self.driver.find_element(*MainPageLocators.LOGO_SCOOTER).click()
+        logo_scooter = self.wait_and_find_element(MainPageLocators.LOGO_SCOOTER)
+        logo_scooter.click()
+
     @allure.description('Клик на логотип «Яндекс»')
     def click_logo_yandex(self):
-        self.driver.find_element(*MainPageLocators.LOGO_YANDEX).click()
+        logo_yandex = self.wait_and_find_element(MainPageLocators.LOGO_YANDEX)
+        logo_yandex.click()
 
     def open_faq(self, index):
-        faq_buttons = self.driver.find_elements(*MainPageLocators.FAQ_BUTTONS)
+        faq_buttons = self.wait_and_find_element(*MainPageLocators.FAQ_BUTTONS)
         faq_buttons[index].click()
 
     def get_faq_answer(self, index):
-        faq_answers = self.driver.find_elements(*MainPageLocators.FAQ_ANSWERS)
+        faq_answers = self.wait_and_find_element(*MainPageLocators.FAQ_ANSWERS)
         return faq_answers[index].text
 
 
