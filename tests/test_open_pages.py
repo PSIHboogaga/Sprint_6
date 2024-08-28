@@ -12,11 +12,8 @@ class TestOpenPageScooter:
         main_page = MainPage(driver)
         main_page.open_page(Urls.MAIN_PAGE)
         main_page.click_logo_scooter()
-
-        assert driver.current_url == 'https://qa-scooter.praktikum-services.ru/', (
-            'Страница яндекс самокат не открыта')  # Проверяем, что перешли на главную страницу «Самоката»
-
-
+        main_page.wait_for_time()
+        assert main_page.get_current_url() == Urls.MAIN_PAGE, ('Страница самоката не открыта')
 
 class TestOpenPageDzen:
     @allure.description('Кликаем на логотип «Яндекс»')
@@ -24,10 +21,8 @@ class TestOpenPageDzen:
         main_page = MainPage(driver)
         main_page.open_page(Urls.MAIN_PAGE)
         main_page.click_logo_yandex()
-        WebDriverWait(driver, 10).until(expected_conditions.number_of_windows_to_be(2))
-        driver.switch_to.window(driver.window_handles[1])
-        WebDriverWait(driver, 10).until(expected_conditions.url_contains('https://dzen.ru/'))
+        main_page.switch_to_new_window()
+        main_page.wait_for_dzen_page()
 
-        assert driver.current_url == 'https://dzen.ru/?yredirect=true', (
+        assert main_page.get_current_url() == Urls.DZEN_PAGE, (
             'Страница ДЗЕН не открыта')  # Проверяем, что перешли на Dzen
-
