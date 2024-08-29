@@ -1,6 +1,4 @@
 import allure
-from selenium.webdriver.support import expected_conditions
-from selenium.webdriver.support.wait import WebDriverWait
 
 from data import Urls
 from pages.main_page import MainPage
