@@ -1,16 +1,10 @@
 import allure
-from selenium.webdriver.support import expected_conditions
-from selenium.webdriver.support.wait import WebDriverWait
 
 from locators.main_page_locator import MainPageLocators
 from pages.base_page import BasePage
 
-class MainPage(BasePage):
-    @allure.step('Клик кнопки заказать(вверху\внизу)')
-    def click_order_button(self, index):
-        order_button = MainPageLocators.BUTTON_ORDER_UP if index == 0 else MainPageLocators.BUTTON_ORDER_DOWN
-        self.wait_and_find_element(order_button).click()
 
+class MainPage(BasePage):
     @allure.step('Клик на логотип «Самоката»')
     def click_logo_scooter(self):
         logo_scooter = self.wait_and_find_element(MainPageLocators.LOGO_SCOOTER)

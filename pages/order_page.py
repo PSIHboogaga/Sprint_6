@@ -10,6 +10,14 @@ class OrderPage(BasePage):
         order_button_up = self.wait_and_find_element(OrderPageLocators.BUTTON_ORDER_UP)
         order_button_up.click()
 
+    @allure.step("Клик кнопки заказать (внизу)")
+    def click_order_button_down(self, buttone_locator):
+
+        order_button_down = self.wait_and_find_element(buttone_locator)
+        self.driver.execute_script("arguments[0].scrollIntoView();", order_button_down)  # Прокручиваем к элементу
+        self.wait_and_find_element(buttone_locator)
+        order_button_down.click()
+
     @allure.step("Заполняем поле имя")
     def set_name_field(self, name):
         name_field = self.wait_and_find_element(OrderPageLocators.NAME_INPUT)
@@ -34,11 +42,6 @@ class OrderPage(BasePage):
     def click_metro_button(self):
         metro_button = self.wait_and_find_element(OrderPageLocators.METRO_INPUT)
         metro_button.click()
-
-    # @allure.step("Клик на метро")
-    # def select_metro(self, metro):
-    #     metro_field = self.wait_and_find_element(OrderPageLocators.METRO_INPUT)
-    #     metro_field.send_keys(metro)
 
     @allure.step("Выбираем метро")
     def select_metro_station(self):
@@ -74,24 +77,3 @@ class OrderPage(BasePage):
     def click_yes_button(self):
         yes_button = self.wait_and_find_element(OrderPageLocators.BUTTON_YES)
         yes_button.click()
-
-
-
-
-    # @allure.step("Оформляем заказ")
-    # def order(self, name, surname, address, phone, metro):
-    #     self.click_order_button_up()
-    #     self.set_name_field(name)
-    #     self.set_surname_field(surname)
-    #     self.set_address_field(address)
-    #     self.set_phone_field(phone)
-    #     self.click_metro_button()
-    #     self.select_metro(metro)
-    #     self.click_next_button()
-    #     self.click_time_field()
-    #     self.click_time_field_select()
-    #     self.click_rental_period()
-    #     self.click_submit_button()
-    #     self.click_yes_button()
-
-
