@@ -1,7 +1,6 @@
 import allure
 
 from data import OrderData, Urls
-from locators.order_page_locator import OrderPageLocators
 from pages.order_page import OrderPage
 
 
@@ -19,16 +18,13 @@ class TestOrderSamokat:
         order_page.click_metro_button()
         order_page.select_metro_station()
         order_page.click_next_button()
-        order_page.wait_and_find_element(OrderPageLocators.TIME_FIELD)
         order_page.set_date(OrderData.DATE)
         order_page.click_rental_period()
-        order_page.wait_and_find_element(OrderPageLocators.RENTAL_PERIOD_SELECT)
         order_page.click_rental_period_sutki()
         order_page.click_submit_button()
         order_page.click_yes_button()
-        order_page.wait_text_and_find_element(OrderPageLocators.BANNER_ORDER_OK, 'Заказ оформлен')
 
         expected_text = "Заказ оформлен"
-        actual_text = order_page.get_element_text(OrderPageLocators.BANNER_ORDER_OK)
+        actual_text = order_page.find_actual_text()
 
         assert expected_text in actual_text

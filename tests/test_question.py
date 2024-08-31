@@ -5,6 +5,7 @@ from data import Urls, QuestionData
 from locators.main_page_locator import QuestionLocators, AnswerLocators
 from pages.main_page import MainPage
 
+
 class TestQuestion:
     @allure.title('Проверка ответов на вопросы')
     @pytest.mark.parametrize(

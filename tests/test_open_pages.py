@@ -3,6 +3,7 @@ import allure
 from data import Urls
 from pages.main_page import MainPage
 
+
 class TestOpenPageScooter:
     @allure.title('Проверка открытия страниц по клику')
     @allure.description('Кликаем на логотип «Самокат»')
@@ -10,8 +11,8 @@ class TestOpenPageScooter:
         main_page = MainPage(driver)
         main_page.open_page(Urls.MAIN_PAGE)
         main_page.click_logo_scooter()
-        main_page.wait_for_time()
         assert main_page.get_current_url() == Urls.MAIN_PAGE, ('Страница самоката не открыта')
+
 
 class TestOpenPageDzen:
     @allure.description('Кликаем на логотип «Яндекс»')
