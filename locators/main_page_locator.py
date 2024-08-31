@@ -7,6 +7,7 @@ class MainPageLocators:
 
     LOGO_SCOOTER = (By.XPATH, '//*[@alt="Scooter"]')
     LOGO_YANDEX = (By.XPATH, '//*[@href="//yandex.ru"]')
+    LOGO_DZEN = (By.XPATH, '//*[@class="dzen-layout--desktop-base-header__logoWithText-3k dzen-layout--desktop-base-header__isMorda-2n dzen-layout--desktop-base-header__isBlackHeaderRedesignEnabled-1P"]')
 
     FAQ_BUTTONS = (By.XPATH, '//*[@id="accordion__heading-"]')
     FAQ_ANSWERS = (By.XPATH, '//*[@id="accordion__panel-"]')
