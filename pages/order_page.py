@@ -14,7 +14,7 @@ class OrderPage(BasePage):
     def click_order_button_down(self, buttone_locator):
 
         order_button_down = self.wait_and_find_element(buttone_locator)
-        self.driver.execute_script("arguments[0].scrollIntoView();", order_button_down)  # Прокручиваем к элементу
+        self.scroll_to_element(order_button_down)  # Прокручиваем к элементу
         self.wait_and_find_element(buttone_locator)
         order_button_down.click()
 
@@ -77,3 +77,8 @@ class OrderPage(BasePage):
     def click_yes_button(self):
         yes_button = self.wait_and_find_element(OrderPageLocators.BUTTON_YES)
         yes_button.click()
+
+    @allure.step("")
+    def find_actual_text(self):
+        actual_texts = self.wait_for_element_to_appear(OrderPageLocators.BANNER_ORDER_OK)
+        return actual_texts.text

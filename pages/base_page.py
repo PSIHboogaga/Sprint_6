@@ -27,15 +27,11 @@ class BasePage:
         WebDriverWait(self.driver, 10).until(expected_conditions.number_of_windows_to_be(2))
         self.driver.switch_to.window(self.driver.window_handles[1])
 
-    def wait_for_time(self):
-        WebDriverWait(self.driver, 5)
-
     def get_current_url(self):
         return self.driver.current_url
 
     def wait_for_dzen_page(self):
         WebDriverWait(self.driver, 10).until(expected_conditions.url_contains('https://dzen.ru/'))
 
-    def get_element_text(self, locator):
-        element = WebDriverWait(self.driver, 10).until(expected_conditions.presence_of_element_located(locator))
-        return element.text
+    def scroll_to_element(self, element):
+       self.driver.execute_script("arguments[0].scrollIntoView();", element)  # Прокручиваем к элементу

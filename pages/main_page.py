@@ -19,7 +19,7 @@ class MainPage(BasePage):
     def open_question(self, question_locator):
 
         question_element = self.wait_and_find_element(question_locator)
-        self.driver.execute_script("arguments[0].scrollIntoView();", question_element)  # Прокручиваем к элементу
+        self.scroll_to_element(question_element)  # Прокручиваем к элементу
         self.wait_and_find_element(question_locator)
         question_element.click()
 
